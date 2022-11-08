@@ -7,10 +7,18 @@ name: CI
       - main
 
 jobs:
-
   test:
     name: Molecule
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        scenario:
+          - centos-8
+          - debian-10
+          - fedora-34
+          - oraclelinux-8
+          - ubuntu-20.04
 
     steps:
       - name: Check out the codebase
