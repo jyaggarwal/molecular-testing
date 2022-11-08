@@ -10,7 +10,7 @@ jobs:
 
   test:
     name: Molecule
-    runs-on: ubuntu-latest
+    runs-on: httpd-latest
 
     steps:
       - name: Check out the codebase
