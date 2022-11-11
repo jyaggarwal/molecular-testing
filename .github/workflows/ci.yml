@@ -1,39 +1,35 @@
 ---
-name: CI
+name: Molecule Test
 'on':
-  pull_request:
-  push:
-    branches:
-      - main
-
+  - push
+  - pull_request
 jobs:
-  test:
-    name: Molecule
+  build:
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
+      max-parallel: 4
       matrix:
-        scenario:
-          - centos-8
-          - debian-10
-          - fedora-34
-          - oraclelinux-8
-          - ubuntu-20.04
-
+        python-version:
+          - 3.8
     steps:
-      - name: Check out the codebase
-        uses: actions/checkout@v2
-
-      - name: Set up Python 3.
+      - uses: actions/checkout@v2
+        with:
+          path: DemoProject-AT
+      - name: 'Set up Python ${{ matrix.python-version }}'
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
+          python-version: '${{ matrix.python-version }}'
+      - name: Install dependencies
+        run: |
 
-      - name: install dependancies.
-        run: pip3 install molecule[docker] yamllint ansible-lint
+          python3 -m pip install --upgrade pip
 
-      - name: run Molecule tests
-        run: molecule test
-        env:
-         PY_COLOR: '1'
-         ANSIBLE_FORCE_COLOR: '1'
+          python3 -m pip install molecule ansible-core
+
+          python3 -m pip install --upgrade --user setuptools
+
+          python3 -m pip install --user "molecule[docker]"
+
+          molecule init role acme.my_new_role --driver-name docker
+      - name: Test with molecule
+        run: cd my_new_role && molecule test
