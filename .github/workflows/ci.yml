@@ -15,21 +15,19 @@ jobs:
       - uses: actions/checkout@v2
         with:
           path: molecular-testing
+          
       - name: 'Set up Python ${{ matrix.python-version }}'
         uses: actions/setup-python@v2
         with:
           python-version: '${{ matrix.python-version }}'
+          
       - name: Install dependencies
         run: |
-
           python3 -m pip install --upgrade pip
-
           python3 -m pip install molecule ansible-core
-
           python3 -m pip install --upgrade --user setuptools
-
           python3 -m pip install --user "molecule[docker]"
-
+          mkdir myNewRole && cd myNewFolder
           molecule init role acme.my_new_role --driver-name docker
       - name: Test with molecule
         run: cd my_new_role && molecule test
