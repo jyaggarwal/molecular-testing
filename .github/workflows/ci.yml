@@ -36,6 +36,6 @@ jobs:
           # molecule init role acme.my_new_role --driver-name docker
           # cp -a /home/runner/work/molecular-testing/molecular-testing/my_new_role/. my_test_role/
       - name: Test with molecule
-        run: cd /home/runner/work/molecular-testing/molecular-testing/mywebapp && molecule test
+        run: cd /home/runner/work/molecular-testing/molecular-testing/my_new_role && molecule test
         
 
