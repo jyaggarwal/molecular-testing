@@ -30,12 +30,12 @@ jobs:
           python3 -m pip install molecule ansible-core
           python3 -m pip install --upgrade --user setuptools
           python3 -m pip install --user "molecule[docker]"
-          pwd
-          mkdir my_test_role
+          # pwd
+          # mkdir my_test_role
           ls -la
-          molecule init role acme.my_new_role --driver-name docker
-          cp -a /home/runner/work/molecular-testing/molecular-testing/my_new_role/. my_test_role/
+          # molecule init role acme.my_new_role --driver-name docker
+          # cp -a /home/runner/work/molecular-testing/molecular-testing/my_new_role/. my_test_role/
       - name: Test with molecule
-        run: cd my_new_role && molecule test
+        run: cd /home/runner/work/molecular-testing/molecular-testing/mywebapp && molecule test
         
 
