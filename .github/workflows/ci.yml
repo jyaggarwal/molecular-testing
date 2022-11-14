@@ -33,3 +33,8 @@ jobs:
           cp -a /home/runner/work/molecular-testing/molecular-testing/my_new_role/. my_test_role/
       - name: Test with molecule
         run: cd my_new_role && molecule test
+        
+      - name: Create dir
+        run: |
+          mkdir mydirname
+          mv readme-*.md mydirname
