@@ -32,6 +32,7 @@ jobs:
           python3 -m pip install --user "molecule[docker]"
           pwd
           mkdir my_test_role
+          ls -la
           molecule init role acme.my_new_role --driver-name docker
           cp -a /home/runner/work/molecular-testing/molecular-testing/my_new_role/. my_test_role/
       - name: Test with molecule
