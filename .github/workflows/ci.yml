@@ -30,11 +30,12 @@ jobs:
           python3 -m pip install molecule ansible-core
           python3 -m pip install --upgrade --user setuptools
           python3 -m pip install --user "molecule[docker]"
-          ls -la
           molecule init role acme.my_new_role --driver-name docker
-          ls -la
           ansible-galaxy init test-role
-          ansible-galaxy init molecule-test-role   
+          ansible-galaxy init molecule-test-role
+          ln -s ../../../roles/ ./my_new_role/molecule/default/roles
+          echo "  roles:" >> my_new_role/molecule/default/converge.yml
+          echo "    - role: monitoring" >> my_new_role/molecule/default/converge.yml
       - name: Test with molecule
         run: cd my_new_role && molecule list && molecule create && molecule list && molecule converge
         
