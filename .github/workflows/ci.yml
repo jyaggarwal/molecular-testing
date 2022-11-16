@@ -36,7 +36,7 @@ jobs:
           #cd molecular-testing/roles/
           ls -la
           pwd
-          ln -s /molecular-testing/roles/ my_new_role/molecule/default/roles
+          ln -s /molecular-testing/roles/ ./my_new_role/molecule/default/roles
           echo "  roles:" >> my_new_role/molecule/default/converge.yml
           echo "    - role: monitoring" >> my_new_role/molecule/default/converge.yml
       - name: Test with molecule
