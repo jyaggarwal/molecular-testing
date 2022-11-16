@@ -32,7 +32,7 @@ jobs:
           python3 -m pip install --user "molecule[docker]"
           ls -la
           molecule init role acme.my_new_role --driver-name docker
-          cd ../../../roles
+          cd ../../../../roles
           ansible-galaxy init test-role
           ansible-galaxy init molecule-test-role   
       - name: Test with molecule
