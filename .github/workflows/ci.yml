@@ -35,6 +35,7 @@ jobs:
           ansible-galaxy init molecule-test-role
           #cd molecular-testing/roles/
           ls -la
+          pwd
           ln -s molecular-testing/roles/ my_new_role/molecule/default/roles
           echo "  roles:" >> my_new_role/molecule/default/converge.yml
           echo "    - role: monitoring" >> my_new_role/molecule/default/converge.yml
