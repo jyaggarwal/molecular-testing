@@ -33,7 +33,7 @@ jobs:
           molecule init role acme.my_new_role --driver-name docker
           ansible-galaxy init test-role
           ansible-galaxy init molecule-test-role
-          cd ../../../roles/
+          cd molecular-testing/roles/
           ls -la
           #ln -s ../../../roles/ ./my_new_role/molecule/default/roles
           #echo "  roles:" >> my_new_role/molecule/default/converge.yml
