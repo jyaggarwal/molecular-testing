@@ -15,3 +15,4 @@ cat >> my_new_role/molecule/default/molecule.yml "  env:"
 cat >> my_new_role/molecule/default/molecule.yml "    ANSIBLE_ROLES_PATH: '../../roles'"
 cat >> my_new_role/molecule/default/molecule.yml "verifier:"
 cat >> my_new_role/molecule/default/molecule.yml "  name: ansible"
+EOF
