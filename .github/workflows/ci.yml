@@ -36,7 +36,7 @@ jobs:
           #cd molecular-testing/roles/
           #ln -s /molecular-testing/roles/ ./my_new_role/molecule/default/roles
           rm -rf my_new_role/molecule/default/molecule.yml
-          vi my_new_role/molecule/default/molecule.yml
+          $ vim my_new_role/molecule/default/molecule.yml
           echo "---" >> my_new_role/molecule/default/molecule.yml
           echo "dependency:" >> my_new_role/molecule/default/molecule.yml
           echo "  name: galaxy" >> my_new_role/molecule/default/molecule.yml
