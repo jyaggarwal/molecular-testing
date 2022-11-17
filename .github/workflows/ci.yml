@@ -36,9 +36,18 @@ jobs:
           echo "    - role: monitoring" >> my_new_role/molecule/default/converge.yml
       - name: Run script file
         run: |
-         chmod +x molecular-testing/scripts/test.sh
-         molecular-testing/scripts/test.sh
-        shell: bash
+         ed my_new_role/molecule/default/molecule.yml
+         11i
+           env:
+             ANSIBLE_ROLES_PATH: "../../roles"
+         .
+         w
+         q
+      #- name: Run script file
+        #run: |
+         #chmod +x molecular-testing/scripts/test.sh
+         #molecular-testing/scripts/test.sh
+        #shell: bash
       - name: Test with molecule
         run: cd my_new_role && molecule list && molecule create && molecule list && molecule converge
         
