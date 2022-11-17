@@ -16,3 +16,4 @@ echo "  env:" >> my_new_role/molecule/default/molecule.yml
 echo "    ANSIBLE_ROLES_PATH: '../../roles'" >> my_new_role/molecule/default/molecule.yml
 echo "verifier:" >> my_new_role/molecule/default/molecule.yml
 echo "  name: ansible" >> my_new_role/molecule/default/molecule.yml
+:q<Enter>
