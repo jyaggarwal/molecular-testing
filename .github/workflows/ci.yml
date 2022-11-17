@@ -34,13 +34,24 @@ jobs:
           #ansible-galaxy init test-role
           #ansible-galaxy init molecule-test-role
           #cd molecular-testing/roles/
-          ls -la
-          pwd
           #ln -s /molecular-testing/roles/ ./my_new_role/molecule/default/roles
-          grep provisioner: my_new_role/molecule/default/molecule.yml >> my_new_role/molecule/default/molecule.yml 
-          echo $'\r' >> my_new_role/molecule/default/molecule.yml
-          echo 
-
+          rm -rf my_new_role/molecule/default/molecule.yml
+          vi my_new_role/molecule/default/molecule.yml
+          echo "---" >> my_new_role/molecule/default/molecule.yml
+          echo "dependency:" >> my_new_role/molecule/default/molecule.yml
+          echo "  name: galaxy" >> my_new_role/molecule/default/molecule.yml
+          echo "driver:" >> my_new_role/molecule/default/molecule.yml
+          echo "  name: docker" >> my_new_role/molecule/default/molecule.yml
+          echo "platforms:" >> my_new_role/molecule/default/molecule.yml
+          echo "  - name: instance" >> my_new_role/molecule/default/molecule.yml
+          echo "    image: quay.io/centos/centos:stream8" >> my_new_role/molecule/default/molecule.yml
+          echo "    pre_build_image: true" >> my_new_role/molecule/default/molecule.yml
+          echo "provisioner:" >> my_new_role/molecule/default/molecule.yml
+          echo "  name: ansible" >> my_new_role/molecule/default/molecule.yml
+          echo "  env:" >> my_new_role/molecule/default/molecule.yml
+          echo "    ANSIBLE_ROLES_PATH: '../../roles'" >> my_new_role/molecule/default/molecule.yml
+          echo "verifier:" >> my_new_role/molecule/default/molecule.yml
+          echo "  name: ansible" >> my_new_role/molecule/default/molecule.yml
           echo "  roles:" >> my_new_role/molecule/default/converge.yml
           echo "    - role: monitoring" >> my_new_role/molecule/default/converge.yml
       - name: Test with molecule
